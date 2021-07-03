@@ -18,12 +18,20 @@ export const getPicture = (data) => ({ type: GET_PICTURE, data });
 // };
 
 // COM ASYNC
-export const fetchAPI = () => {
-  // Desenvolva aqui o código da action assíncrona
-  return async (dispatch) => {
-    dispatch(requestAPI());
-    const reponse = await fetch('https://aws.random.cat/meow')
-    const json =  await reponse.json();
-    dispatch(getPicture(json));
-  };
+// export const fetchAPI = () => {
+//   // Desenvolva aqui o código da action assíncrona
+//   return async (dispatch) => {
+//     dispatch(requestAPI());
+//     const reponse = await fetch('https://aws.random.cat/meow')
+//     const json =  await reponse.json();
+//     dispatch(getPicture(json));
+//   };
+// };
+
+//COM ASYNC EM UMA ESTRUTURA MENOR
+export const fetchAPI = () => async (dispatch) => {
+  dispatch(requestAPI());
+  const reponse = await fetch('https://aws.random.cat/meow')
+  const json =  await reponse.json();
+  dispatch(getPicture(json));
 };
